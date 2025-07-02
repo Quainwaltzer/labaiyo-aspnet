@@ -1,0 +1,84 @@
+﻿@model List<LabaIyo.Models.Laundry>
+
+@section Styles {
+    <link href="~/css/main.css" rel="stylesheet" />
+}
+
+<main>
+    <section class="container">
+        <h2 style="text-align:center; margin-bottom: 30px;">Laundry Orders</h2>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div style="text-align:center; color: red; font-style: italic; margin-top: 20px;">
+                No laundry orders found.
+            </div>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Items</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var laundry in Model)
+                    {
+                        <tr>
+                            <td>@laundry.Id</td>
+                            <td>@laundry.fname @laundry.lname</td>
+                            <td>@laundry.phone</td>
+                            <td>@laundry.email</td>
+                            <td>
+                                @if (laundry.items != null && laundry.items.Any())
+                                {
+                                    <table style="width:100%; background-color: rgba(255,255,255,0.05);">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Name</th>
+                                                <th>Color</th>
+                                                <th>Quantity</th>
+                                                <th>Laundry ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in laundry.items)
+                                            {
+                                                <tr>
+                                                    <td>@item.itemType</td>
+                                                    <td>@item.itemName</td>
+                                                    <td>@item.itemColor</td>
+                                                    <td>@item.itemQuantity</td>
+                                                    <td>@item.LaundryId</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                                else
+                                {
+                                    <span>No items</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+</main>
+
+<footer>
+    <div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-instagram"></a>
+    </div>
+    <p>&copy; 2023 Laba-Iyo Team. All rights reserved.</p>
+    <p>Privacy Policy | Terms of Use</p>
+</footer>

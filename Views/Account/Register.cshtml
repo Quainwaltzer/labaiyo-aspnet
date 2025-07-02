@@ -1,0 +1,49 @@
+﻿@model LabaIyo.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+@section Styles {
+    <link href="~/css/main.css" rel="stylesheet" />
+}
+
+<main>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <section class="container">
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <h2>Create an Account</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label asp-for="Username"></label></td>
+                        <td><input asp-for="Username" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Email"></label></td>
+                        <td><input asp-for="Email" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Password"></label></td>
+                        <td><input asp-for="Password" type="password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="ConfirmPassword"></label></td>
+                        <td><input asp-for="ConfirmPassword" type="password" /></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-instagram"></a>
+    </div>
+    <p>&copy; 2023 Laba-Iyo Team. All rights reserved.</p>
+    <p>Privacy Policy | Terms of Use</p>
+</footer>
